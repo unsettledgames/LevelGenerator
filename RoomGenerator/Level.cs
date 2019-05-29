@@ -9,38 +9,37 @@ namespace RoomGenerator
 {
     class Level
     {
-        /* Dati sulla generazione delle stanze */
+        // Data about room generation
         private int minRoomWidth;
         private int maxRoomWidth;
         private int minRoomHeight;
         private int maxRoomHeight;
 
-        /* Dati sulla generazione dei corridoi */
+        // Data about corridor generation
         private int minCorridorWidth;
         private int maxCorridorWidth;
         private int minCorridorHeight;
         private int maxCorridorHeight;
 
-        /* Indica il numero massimo di corridoi per lato della stanza */
+        // Maximum number of corridors per room side
         private int maxCorridorsPerSide;
-        /* Indica la probabilità che una stanza abbia un corridoio (ricalcolata per ogni lato) */
+        // Probabiloty that a corridor is attached to a side of a room
         private int corridorProbability;
-        /* Indica la probabilità che, nella generazione di una stanza si cambi il punto di attacco dei corridoi (
-         * tendenzialmente serve a rendere un livello più casuale, cercando di distribuire il numero dei corridoi */
+        // Probability that, during the generation of a room, the point in which a corridor is attached changes
         private int roomChangeProbability;
-        /* Indica il numero di stanze che compone il livello */
+        // Total number of rooms in the level
         private int nRooms;
 
-        /* Matrice in cui verrà salvato il livello generato (sottoforma di 1 e di 0) */
+        // Matrix in which the level will be stored
         private int[][] level;
-        /* Bitmap in cui verrà salvato il livello generato (con i colori impostati) */
+        // Output bitmap
         private Bitmap bitmap;
-        /* Colore di sfondo */
+        // Background color
         private Color backgroundColor;
-        /* Colore delle stanze */
+        // Room color
         private Color foregroundColor;
 
-        /* In queste due liste salvo stanze e corridoi */
+        // Lists where rooms and corridors are saved
         private List<Room> rooms;
         private List<Corridor> corridors;
 
@@ -48,19 +47,19 @@ namespace RoomGenerator
                      int maxCorridorWidth, int minCorridorHeight, int maxCorridorHeight, int maxCorridorsPerSide, 
                      int corridorProbability, int nRooms, Color backgroundColor, Color foregroundColor, int roomChangeProbability)
         {
-            /* Imposto i dati sulle stanze */
+            // Setting room data
             this.minRoomWidth = minRoomWidth;
             this.minRoomHeight = minRoomHeight;
             this.maxRoomWidth = maxRoomWidth;
             this.maxRoomHeight = maxRoomHeight;
 
-            /* Imposto i dati sui corridoi */
+            // Setting corridor data
             this.maxCorridorHeight = maxCorridorHeight;
             this.minCorridorHeight = minCorridorHeight;
             this.maxCorridorWidth = maxCorridorWidth;
             this.minCorridorWidth = minCorridorWidth;
 
-            /* Imposto i dati sulla generazione */
+            // Setting generation data
             this.maxCorridorsPerSide = maxCorridorsPerSide;
             this.corridorProbability = corridorProbability;
             this.nRooms = nRooms;
@@ -68,11 +67,11 @@ namespace RoomGenerator
             this.foregroundColor = foregroundColor;
             this.roomChangeProbability = roomChangeProbability;
 
-            /* Creo le liste */
+            // Initializing lists
             this.rooms = new List<Room>();
             this.corridors = new List<Corridor>();
 
-            /* Creo la bitmap (teoricamente deve essere cancellata una volta che vengono applicate le textures) */
+            // Initializing bitmap
             this.bitmap = new Bitmap(Consts.MAX_LEVEL_WIDTH, Consts.MAX_LEVEL_HEIGHT);
 
             InitializeMatrix();
@@ -91,67 +90,68 @@ namespace RoomGenerator
             {
                 for (int j=0; j<Consts.MAX_LEVEL_HEIGHT; j++)
                 {
-                    this.level[i][j] = 0;
+                    this.level[i][j] = -1;
                 }
             }
         }
 
         public void GenerateMap()
         {
-            /* Generatore di numeri casuali */
+            // Utility random number generator
             Random random = new Random();
-            /* Lista delle stanze espandibili */
+            // In this list there will be stored the expandable rooms, those rooms that have room (HAHAHAHA) 
+            // for at least another corridor
             List<Room> expandableRooms;
 
-            /* Genero la prima stanza */
+            // Generating first room
             Room start = new Room(random.Next(minRoomWidth, maxRoomWidth), random.Next(minRoomHeight, maxRoomHeight), new Corner(0, 0));
-            /* La aggiungo alla lista */
+            // Adding it to the list
             rooms.Add(start);
 
-            /* Finché non ho generato tutte le stanze che mi servono */
+            // Repeating until I haven't generated all the necessary rooms
             while (rooms.Count < nRooms)
             {
-                /* Prendo la stanza a cui aggiungere tutto */
-                Room toAddTo = GetFirstExpandableRoom();
+                // Taking the reference room (I'll attach corridors to it)
+                Room toAddTo = GetRandomExpandableRoom();
 
-                /* Finché non ho generato tutte le stanze che mi servono o non posso più aggiungere corridoi */
+                // Repeating until I can add corridors or I've added enough rooms
                 while ((rooms.Count < nRooms) && (toAddTo.GetNCorridors() < (maxCorridorsPerSide * Consts.SIDE_COUNT)) && (toAddTo.GetNCorridors() < toAddTo.GetMaxCorridors()))
                 {
-                    /* Entro nel loop di aggiunta dei corridoi */
-                    /* Provo a cambiare stanza */
+                    // Adding corridors
+                    // Trying to change reference room
                     if (random.Next(0, 101) < roomChangeProbability)
                     {
-                        /* Se la probailità è tale da permettermi di cambiare stanza, ne prendo una a caso tra quelle espandibili */
-                        expandableRooms = GetExpandableRooms();
-                        toAddTo = expandableRooms[random.Next(0, expandableRooms.Count)];
+                        // This gives more randomness to the level
+                        toAddTo = GetRandomExpandableRoom();
                     }
 
-                    /* Ciclo lungo tutti i lati */
+                    // Cycling through all the sides of the room
                     for (int sideIndex=Consts.NORTH; sideIndex <= Consts.WEST; sideIndex++)
                     {
-                        /* Provo ad aggiungere i corridoi */
+                        // Trying to add corridors
                         for (int corridorIndex=0; corridorIndex < maxCorridorsPerSide; corridorIndex++)
                         {
-                            /* Angoli della stanza */
+                            // Getting corners of the reference room
                             List<Corner> currentRoomCorners = toAddTo.GetCorners();
-                            /* Corridoio da aggiungere poi alla lista */
+                            // Corridor to add to the list
                             Corridor toAddCorridor = null;
-                            /* Stanza da aggiungere poi alla lista */
+                            // Room to add to the list
                             Room toAddRoom = null;
-                            /* Larghezza e altezza del corridoio */
-                            /* ATTENZIONE! Si suppone che l'altezza sia il lato più corto, la larghezza quello più lungo:
-                             * in caso di corridoi attaccati al lato destro o sinistro della stanza, altezza e larghezza 
-                             * saranno scambiati, così che il lato corto sia sempre quello attaccato al lato della stanza
+                            // Generating width and height of the corridor
+                            /* WARNING! The term "height" is referred to the shortest, vertical side. In case of vertical
+                             * corridors (north or south), the height is inverted with the width so that the shortest
+                             * side is always attached to the room.
                              */
                             int corridorWidth = random.Next(minCorridorWidth, maxCorridorWidth);
                             int corridorHeight = random.Next(minCorridorHeight, maxCorridorHeight);
-                            /* Larghezza e altezza della stanza */
+                            // Generating width and height of the room 
                             int roomWidth = random.Next(minRoomWidth, maxRoomWidth);
                             int roomHeight = random.Next(minRoomHeight, maxRoomHeight);
 
-                            /* Se posso aggiungere un corridoio */
+                            // If I can add a corridor
                             if (random.Next(0, 100) >= corridorProbability)
                             {
+                                // I generate a corridor
                                 toAddCorridor = GenerateCorridor(sideIndex, toAddTo, corridorHeight, corridorWidth);
 
                                 if (toAddCorridor != null)
@@ -161,9 +161,9 @@ namespace RoomGenerator
 
                                 if (toAddRoom != null && toAddCorridor != null)
                                 {
-                                    /* Aggiungo il corridoio alla stanza */
+                                    // Adding corridor to the reference room
                                     toAddRoom.AddCorridor(toAddCorridor);
-                                    /* Aggiungo sia corridoio che stanza alla lista dei corridoi e delle stanze */
+                                    // Adding new room at the end of the corridor
                                     this.corridors.Add(toAddCorridor);
                                     this.rooms.Add(toAddRoom);
                                 }
@@ -173,24 +173,40 @@ namespace RoomGenerator
                 }
             }
 
+            // Filling the matrix (depending on the values contained in the corridor and room lists)
             FillMatrix();
+            // Exporting the bitmap obtained from the matrix
             ExportBitmap();
         }
 
+        /** Generates a corridor
+         * 
+         * @param sideIndex:        side of the room on which the corridor should be added
+         * @param toAddTo:          room to which the corridor should be added
+         * @param corridorHeight:   height of the corridor
+         * @param corridorWidth:    width of the corridor
+         * 
+         * @return: the generated corridor
+         */
         private Corridor GenerateCorridor(int sideIndex, Room toAddTo, int corridorHeight, int corridorWidth)
         {
-            Console.WriteLine("Aggiungo corridoio");
+            Console.WriteLine("Adding corridor");
+            // Getting corners of the reference room
             List<Corner> currentRoomCorners = toAddTo.GetCorners();
+            // Top left corner of the corridor
             Corner corridorTopLeftCorner;
+            // Corridor that will be added
             Corridor toAddCorridor = null;
+            // Utility random number generator
             Random random = new Random();
-            /* A seconda del lato in cui mi trovo, devo posizionare in modo differente il corridoio e la nuova stanza */
+
+            // Depending on the side, I should position the corridor in different ways
             switch (sideIndex)
             {
                 case Consts.NORTH:
-                    /* La y del corridoio è la stessa della cima della stanza, la x è a caso
-                     * tra la minima e la massima del lato: alla massima va tolta la larghezza del corridoio */
-
+                    /* The y of the corridor is the same of the top side of the room, the x is randomly 
+                     * decided between the minimum and maximum of the side.
+                     */
                     if (!toAddTo.hasOnTop)
                     {
                         corridorTopLeftCorner = new Corner(
@@ -198,23 +214,25 @@ namespace RoomGenerator
                                         currentRoomCorners[Consts.TOP_RIGHT].GetX() - corridorHeight),
                             currentRoomCorners[Consts.TOP_LEFT].GetY() + corridorWidth);
 
-                        /* Instanzio il corridoio */
+                        // Instantiating corridor
                         toAddCorridor = new Corridor(corridorHeight, corridorWidth, corridorTopLeftCorner);
 
+                        // Notifying the room that now it has a corridor on top of it
                         toAddTo.hasOnTop = true;
                     }
                     break;
                 case Consts.EAST:
                     if (!toAddTo.hasOnRight)
                     {
-                        /* La x del corridoio è quella dell'angolo destro della stanza, la y è a caso tra la minima
-                         * e la massima del lato: alla massima va aggiunta l'altezza del corridoio */
+                        /* The x of the corridor is the same of the top right corner of the room, the y is 
+                         * randomly decided between the minimum and maximum of the right (or left) side.
+                         */
+
                         corridorTopLeftCorner = new Corner(
                             currentRoomCorners[Consts.TOP_RIGHT].GetX(),
                             random.Next(currentRoomCorners[Consts.BOTTOM_RIGHT].GetY() + corridorHeight,
                                         currentRoomCorners[Consts.TOP_RIGHT].GetY()));
 
-                        /* Instanzio il corridoio */
                         toAddCorridor = new Corridor(corridorWidth, corridorHeight, corridorTopLeftCorner);
                         toAddTo.hasOnRight = true;
                     }
@@ -222,14 +240,14 @@ namespace RoomGenerator
                 case Consts.SOUTH:
                     if (!toAddTo.hasOnBottom)
                     {
-                        /* La y del corridoio è la stessa del fondo della stanza, la x è a caso
-                         * tra la minima e la massima del lato: alla massima va tolta la larghezza del corridoio */
+                        /* The y of the corridor is the same of the bottom side of the room, the x is randomly 
+                         * decided between the minimum and maximum of the (top or bottom) side.
+                         */
                         corridorTopLeftCorner = new Corner(
                             random.Next(currentRoomCorners[Consts.BOTTOM_LEFT].GetX(),
                                         currentRoomCorners[Consts.BOTTOM_RIGHT].GetX() - corridorHeight),
                             currentRoomCorners[Consts.BOTTOM_LEFT].GetY());
 
-                        /* Instanzio il corridoio */
                         toAddCorridor = new Corridor(corridorHeight, corridorWidth, corridorTopLeftCorner);
                         toAddTo.hasOnBottom = true;
 
@@ -238,20 +256,21 @@ namespace RoomGenerator
                 case Consts.WEST:
                     if (!toAddTo.hasOnLeft)
                     {
-                        /* La x del corridoio è quella dell'angolo sinistro della stanza più la larghezza, la y è a caso 
-                         * tra la minima e la massima del lato: alla massima va aggiunta l'altezza del corridoio */
+                        /* The x of the corridor is the same of the left side of the room, the y is randomly 
+                         * decided between the minimum and maximum of the (left or right) side.
+                         */
+                         
                         corridorTopLeftCorner = new Corner(
                             currentRoomCorners[Consts.TOP_LEFT].GetX() - corridorWidth,
                             random.Next(currentRoomCorners[Consts.BOTTOM_LEFT].GetY() + corridorHeight,
                                         currentRoomCorners[Consts.TOP_LEFT].GetY()));
-
-                        /* Instanzio il corridoio */
+                        
                         toAddCorridor = new Corridor(corridorWidth, corridorHeight, corridorTopLeftCorner);
                         toAddTo.hasOnLeft = true;
                     }
                     break;
                 default:
-                    Console.WriteLine("INDICE DEL LATO SCONOSCIUTO (" + sideIndex + ")");
+                    Console.WriteLine("Unknown side index (" + sideIndex + ")");
                     toAddCorridor = new Corridor(-1, -1, new Corner(-1, -1));
                     break;
             }
@@ -259,86 +278,77 @@ namespace RoomGenerator
             return toAddCorridor;
         }
 
+        /** Generates a room
+         * 
+         * @param sideIndex:        side to which the corridor is attached
+         * @param toAddCorridor:    corridor to which the room is attached
+         * @roomWidth:              width of the room
+         * @roomHeight:             height of the room
+         * 
+         * @return: the generated room
+         * 
+         */
         private Room GenerateRoom(int sideIndex, Corridor toAddCorridor, int roomWidth, int roomHeight)
         {
             Room toAddRoom;
             List<Corner> corridorCorners = toAddCorridor.GetCorners();
             Corner roomTopLeftCorner;
 
-            Console.WriteLine("Aggiungo stanza");
+            Console.WriteLine("Adding room");
 
             switch (sideIndex)
             {
                 case Consts.NORTH:
-                    /* Sulla base del corridoio appena creato, genero la relativa stanza */
-                    /* Mi servono prima gli angoli del corriodoio */
+   
                     corridorCorners = toAddCorridor.GetCorners();
                     roomTopLeftCorner = new Corner(
-                                 /* La x è data dalla x del punto medio della larghezza del corridoio 
-                                  * più metà della larghezza della stanza */
+                                 /* The x is the same of the middle point of the width of the corridor plus 
+                                  * half the width of the room
+                                  */ 
                                  (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
                                  roomWidth / 2,
-                                 /* La y, invece, è data dalla y del lato nord del corridoio più l'altezza della stanza */
+                                 /* The y is the same of the north side of the corridor plus the height of the room */
                                  corridorCorners[Consts.TOP_LEFT].GetY() + roomHeight
                             );
-                    /* Ora che ho l'angolo posso generare la stanza */
+                    /* Now that I have the corner, I can generate the room */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
                     toAddRoom.hasOnBottom = true;
                     break;
                 case Consts.EAST:
-                    /* Sulla base del corridoio appena creato, genero la relativa stanza */
-                    /* Mi servono prima gli angoli del corriodoio */
                     corridorCorners = toAddCorridor.GetCorners();
 
                     roomTopLeftCorner = new Corner(
-                             /* La x è data dalla x dell'angolo destro del corridoio */
                              corridorCorners[Consts.TOP_RIGHT].GetX(),
-                             /* La y, invece, è la metà dell'altezza della stanza più metà della y del
-                              * punto medio dell'altezza del corridoio */
                              (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 +
                              roomHeight / 2
                         );
-                    /* Ora che ho l'angolo posso generare la stanza */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
                     toAddRoom.hasOnLeft = true;
 
                     break;
                 case Consts.SOUTH:
-                    /* Sulla base del corridoio appena creato, genero la relativa stanza */
-                    /* Mi servono prima gli angoli del corriodoio */
                     corridorCorners = toAddCorridor.GetCorners();
 
                     roomTopLeftCorner = new Corner(
-                             /* La x è data dalla x del punto medio della larghezza del corridoio 
-                              * più metà della larghezza della stanza */
                              (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
                              roomWidth / 2,
-                             /* La y, invece, è data dalla y del lato sud del corridoio */
                              corridorCorners[Consts.BOTTOM_RIGHT].GetY()
                         );
-                    /* Ora che ho l'angolo posso generare la stanza */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
                     toAddRoom.hasOnTop = true;
 
                     break;
                 case Consts.WEST:
-
-                    /* Sulla base del corridoio appena creato, genero la relativa stanza */
-                    /* Mi servono prima gli angoli del corriodoio */
                     corridorCorners = toAddCorridor.GetCorners();
 
                     roomTopLeftCorner = new Corner(
-                             /* La x è data dalla x dell'angolo destro del corridoio */
                              corridorCorners[Consts.TOP_LEFT].GetX() - roomWidth,
-                             /* La y, invece, è la metà dell'altezza della stanza più metà della y del
-                              * punto medio dell'altezza del corridoio */
                              (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 +
                              roomHeight / 2
                         );
-                    /* Ora che ho l'angolo posso generare la stanza */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
                     toAddRoom.hasOnRight = true;
@@ -352,14 +362,18 @@ namespace RoomGenerator
             return toAddRoom;
         }
 
+        /** Fills the matrix with the ids of the rooms 
+         */ 
         private void FillMatrix()
         {
+            // Adding corridors
             for (int i = 0; i < corridors.Count; i++)
             {
                 corridors[i].AddToMatrix(level);
                 Console.WriteLine(i + ") Aggiungo corridoio alla matrice");
             }
 
+            // Adding rooms
             for (int i=0; i<rooms.Count; i++)
             {
                 rooms[i].AddToMatrix(level);
@@ -369,23 +383,22 @@ namespace RoomGenerator
             
         }
 
+        /** Exports the previously generated matrix in bitmap format
+         * 
+         */ 
         private void ExportBitmap()
         {
             for (int i=0; i<Consts.MAX_LEVEL_WIDTH; i++)
             {
                 for (int j=0; j<Consts.MAX_LEVEL_HEIGHT; j++)
                 {
-                    if (level[i][j] == 1)
-                    {
-                        bitmap.SetPixel(i, j, foregroundColor);
-                    }
-                    else if (level[i][j] == 2)
-                    {
-                        bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 0, 0));
-                    }
-                    else 
+                    if (level[i][j] == -1)
                     {
                         bitmap.SetPixel(i, j, backgroundColor);
+                    }
+                    else
+                    {
+                        bitmap.SetPixel(i, j, Color.FromArgb(level[i][j], level[i][j] * 2, level[i][j] * 3));
                     }
                 }
             }
@@ -394,6 +407,9 @@ namespace RoomGenerator
             bitmap.Save("generated.bmp");
         }
 
+        /** Returns the first expandable room from the list
+         * 
+         */ 
         public Room GetFirstExpandableRoom()
         {
             for (int i=0; i<rooms.Count; i++)
@@ -407,6 +423,19 @@ namespace RoomGenerator
             return null;
         }
 
+
+        /** Returns a random expandable room
+         * 
+         */
+        public Room GetRandomExpandableRoom()
+        {
+            List<Room> rooms = GetExpandableRooms();
+            return rooms[new Random().Next(0, rooms.Count)];
+        }
+
+        /* Returns the entire list of the expandable rooms
+         * 
+         */ 
         public List<Room> GetExpandableRooms()
         {
             List<Room> ret = new List<Room>();

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/** PROTOCOLLO?
+/** Infos?
  * 
- * - La larghezza dei corridoi non può essere maggiore della larghezza minima di una stanza
+ * - The width of the corridors can't be bigger than the minimum width of a room
  * - 
  * 
  */ 

@@ -14,7 +14,7 @@ namespace RoomGenerator
 
         public void AddToMatrix(int[][] level)
         {
-            AddToMatrix(level, 2);
+            AddToMatrix(level, id);
         }
     }
 }

@@ -73,7 +73,7 @@ namespace RoomGenerator
 
         public void AddToMatrix(int[][] level)
         {
-            AddToMatrix(level, 1);
+            AddToMatrix(level, id);
         }
     }
 }

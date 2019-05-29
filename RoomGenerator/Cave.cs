@@ -9,7 +9,7 @@ namespace RoomGenerator
     class Cave
     {
         private static int idCount = 0;
-        private int id;
+        protected int id;
         private int width;
         private int height;
         private List<Corner> corners;
@@ -33,7 +33,7 @@ namespace RoomGenerator
             corners.Add(bottomRight);
             corners.Add(bottomLeft);
 
-            /* Questo giochino fa sì che vengano assegnati id progressivi alle stanze e ai corridoi */
+            // Assigns progressively higher id
             id = idCount;
             idCount++;
         }
@@ -53,6 +53,11 @@ namespace RoomGenerator
             return corners;
         }
 
+        /** Adds the entire cave to the matrix
+         * 
+         * @param matrix: the destination matrix
+         * @param code:   the code of the cave
+         */ 
         public void AddToMatrix(int[][] matrix, int code)
         {
             for (int i = corners[Consts.TOP_LEFT].GetX(); i < corners[Consts.TOP_RIGHT].GetX(); i++)

@@ -8,6 +8,14 @@ namespace RoomGenerator
 {
     class MatrixUtility
     {
+        /** Adds an element to a matrix as if the indexes started from the center of the matrix
+         * 
+         * @param i:        normal row index
+         * @param j:        normal column index
+         * @param toAdd:    number to put in the matrix
+         * @param matrix:   the matrix to which the number should be added 
+         * 
+         */ 
         public static void AddElementFromCenter(int i, int j, int toAdd, int[][] matrix)
         {
             int maxWidth = Consts.MAX_LEVEL_WIDTH;
@@ -24,7 +32,7 @@ namespace RoomGenerator
             }
             else
             {
-                Console.WriteLine("Impossibile inserire alla posizione " + i + ", " + j);
+                Console.WriteLine("Couldn't insert at " + i + ", " + j);
             }
         }
     }
