@@ -47,7 +47,6 @@ Here are the generation parameters:
 <h2>Notes</h2>
 
 <ul>
-<li>Sorry, but at the moment comments are in Italian. I will translate them as soon as possible</li>
-
+</ul>
 
 Distributed under the <a href = "https://www.gnu.org/licenses/gpl-3.0.en.html">GPL3 license</a>.
