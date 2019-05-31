@@ -29,5 +29,7 @@ namespace RoomGenerator
         public const int MAX_LEVEL_HEIGHT = 500;
 
         public const int SIDE_COUNT = 4;
+
+        public const float NOISE_INCREASE = 0.0023f;
     }
 }
