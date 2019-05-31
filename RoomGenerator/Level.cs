@@ -173,6 +173,9 @@ namespace RoomGenerator
                 }
             }
 
+            // Removing collisions
+            RemoveCollisions(1);
+
             // Filling the matrix (depending on the values contained in the corridor and room lists)
             FillMatrix();
             // Exporting the bitmap obtained from the matrix
@@ -449,6 +452,57 @@ namespace RoomGenerator
             }
 
             return ret;
+        }
+
+        public void RemoveCollisions(int nAllowedCollisions)
+        {
+            List<Cave> caves = new List<Cave>();
+            List<Cave> newCaves;
+
+            for (int i=0; i<corridors.Count; i++)
+            {
+                caves.Add(corridors[i]);
+            }
+
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                caves.Add(rooms[i]);
+            }
+
+            // Store all the collision data
+            for (int i=0; i<caves.Count - 1; i++)
+            {
+                for (int j=i+1; j<caves.Count; j++)
+                {
+                    caves[i].CollidesWith(caves[j]);
+                } 
+            }
+
+            newCaves = new List<Cave>(caves);
+
+            rooms.Clear();
+            corridors.Clear();
+
+            // Removing rooms with a high collision number
+            for (int i=0; i<caves.Count; i++)
+            {
+                if (caves[i].GetNCollidingRooms() >= nAllowedCollisions)
+                {
+                    caves[i].UpdateCollidingCaves();
+                    newCaves.Remove(caves[i]);
+                }
+                else
+                {
+                    if (caves[i] is Room)
+                    {
+                        rooms.Add((Room)caves[i]);
+                    }
+                    else
+                    {
+                        corridors.Add((Corridor)caves[i]);
+                    }
+                }
+            }
         }
     }
 }

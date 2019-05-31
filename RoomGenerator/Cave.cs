@@ -10,6 +10,9 @@ namespace RoomGenerator
     {
         private static int idCount = 0;
         protected int id;
+        protected int nCollidingRooms;
+        protected List<Cave> collidingCaves;
+
         private int width;
         private int height;
         private List<Corner> corners;
@@ -33,6 +36,9 @@ namespace RoomGenerator
             corners.Add(bottomRight);
             corners.Add(bottomLeft);
 
+            nCollidingRooms = 0;
+            collidingCaves = new List<Cave>();
+
             // Assigns progressively higher id
             id = idCount;
             idCount++;
@@ -53,6 +59,16 @@ namespace RoomGenerator
             return corners;
         }
 
+        public int GetNCollidingRooms()
+        {
+            return nCollidingRooms;
+        }
+
+        public List<Cave> GetCollidingCaves()
+        {
+            return collidingCaves;
+        }
+
         /** Adds the entire cave to the matrix
          * 
          * @param matrix: the destination matrix
@@ -67,6 +83,56 @@ namespace RoomGenerator
                     MatrixUtility.AddElementFromCenter(i, j, code, matrix);
                 }
             }
+        }
+
+        /** Checks if the current cave collides with another one
+         * 
+         * @param other: The other cave
+         * 
+         * @return: True if the cave collides, otherwise it returns false
+         * 
+         */ 
+        public bool CollidesWith(Cave other)
+        {
+            List<Corner> otherCorners = other.GetCorners();
+
+            if (corners[Consts.TOP_LEFT].GetX() > otherCorners[Consts.TOP_RIGHT].GetX() ||
+                otherCorners[Consts.TOP_LEFT].GetX() > corners[Consts.TOP_RIGHT].GetX() ||
+                corners[Consts.BOTTOM_RIGHT].GetY() > otherCorners[Consts.TOP_RIGHT].GetY() ||
+                corners[Consts.TOP_RIGHT].GetY() < otherCorners[Consts.BOTTOM_RIGHT].GetY())
+            {
+                return false;
+            }
+
+            AddCollidingCave(other);
+            other.AddCollidingCave(this);
+            
+            return true;
+        }
+
+        public void UpdateCollidingCaves()
+        {
+            for (int i=0; i<nCollidingRooms; i++)
+            {
+                collidingCaves[i].RemoveCollidingCave(this);
+            }
+        }
+
+        public void AddCollidingCave(Cave toAdd)
+        {
+            this.collidingCaves.Add(toAdd);
+            nCollidingRooms++;
+        }
+
+        public void RemoveCollidingCave(Cave toRemove)
+        {
+            this.collidingCaves.Remove(toRemove);
+            nCollidingRooms--;
+        }
+
+        public void IncrementCollidingRooms()
+        {
+            nCollidingRooms++;
         }
     }
 }
