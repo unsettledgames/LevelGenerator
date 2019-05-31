@@ -99,9 +99,6 @@ namespace RoomGenerator
         {
             // Utility random number generator
             Random random = new Random();
-            // In this list there will be stored the expandable rooms, those rooms that have room (HAHAHAHA) 
-            // for at least another corridor
-            List<Room> expandableRooms;
 
             // Generating first room
             Room start = new Room(random.Next(minRoomWidth, maxRoomWidth), random.Next(minRoomHeight, maxRoomHeight), new Corner(0, 0));
@@ -159,7 +156,7 @@ namespace RoomGenerator
                                     toAddRoom = GenerateRoom(sideIndex, toAddCorridor, roomWidth, roomHeight);
                                 }
 
-                                if (toAddRoom != null && toAddCorridor != null)
+                                if (toAddRoom != null && toAddCorridor != null && !CollidesWithAnything(toAddRoom))
                                 {
                                     // Adding corridor to the reference room
                                     toAddRoom.AddCorridor(toAddCorridor);
@@ -173,13 +170,27 @@ namespace RoomGenerator
                 }
             }
 
-            // Removing collisions
-            RemoveCollisions(1);
-
             // Filling the matrix (depending on the values contained in the corridor and room lists)
             FillMatrix();
             // Exporting the bitmap obtained from the matrix
             ExportBitmap();
+        }
+
+        /** Checks if the room collides with something else
+         * 
+         * @return: true if the room collides, false if doesn't
+         */ 
+        public bool CollidesWithAnything(Room toCheck)
+        {
+            for (int i=0; i<rooms.Count; i++)
+            {
+                if (rooms[i].CollidesWith(toCheck))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /** Generates a corridor
@@ -305,14 +316,14 @@ namespace RoomGenerator
    
                     corridorCorners = toAddCorridor.GetCorners();
                     roomTopLeftCorner = new Corner(
-                                 /* The x is the same of the middle point of the width of the corridor plus 
-                                  * half the width of the room
-                                  */ 
-                                 (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
-                                 roomWidth / 2,
-                                 /* The y is the same of the north side of the corridor plus the height of the room */
-                                 corridorCorners[Consts.TOP_LEFT].GetY() + roomHeight
-                            );
+                                /* The x is the same of the middle point of the width of the corridor plus 
+                                * half the width of the room
+                                */ 
+                                (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
+                                roomWidth / 2,
+                                /* The y is the same of the north side of the corridor plus the height of the room */
+                                corridorCorners[Consts.TOP_LEFT].GetY() + roomHeight
+                        );
                     /* Now that I have the corner, I can generate the room */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
@@ -382,8 +393,6 @@ namespace RoomGenerator
                 rooms[i].AddToMatrix(level);
                 Console.WriteLine(i + ") Aggiungo stanza alla matrice");
             }
-
-            
         }
 
         /** Exports the previously generated matrix in bitmap format
@@ -401,7 +410,7 @@ namespace RoomGenerator
                     }
                     else
                     {
-                        bitmap.SetPixel(i, j, Color.FromArgb(level[i][j], level[i][j] * 2, level[i][j] * 3));
+                        bitmap.SetPixel(i, j, foregroundColor);//Color.FromArgb(level[i][j], level[i][j] * 2, level[i][j] * 3));
                     }
                 }
             }
@@ -409,7 +418,7 @@ namespace RoomGenerator
             Console.WriteLine("Finito, salvo su file...");
             bitmap.Save("generated.bmp");
         }
-
+        
         /** Returns the first expandable room from the list
          * 
          */ 
@@ -425,7 +434,7 @@ namespace RoomGenerator
 
             return null;
         }
-
+        
 
         /** Returns a random expandable room
          * 
@@ -452,57 +461,6 @@ namespace RoomGenerator
             }
 
             return ret;
-        }
-
-        public void RemoveCollisions(int nAllowedCollisions)
-        {
-            List<Cave> caves = new List<Cave>();
-            List<Cave> newCaves;
-
-            for (int i=0; i<corridors.Count; i++)
-            {
-                caves.Add(corridors[i]);
-            }
-
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                caves.Add(rooms[i]);
-            }
-
-            // Store all the collision data
-            for (int i=0; i<caves.Count - 1; i++)
-            {
-                for (int j=i+1; j<caves.Count; j++)
-                {
-                    caves[i].CollidesWith(caves[j]);
-                } 
-            }
-
-            newCaves = new List<Cave>(caves);
-
-            rooms.Clear();
-            corridors.Clear();
-
-            // Removing rooms with a high collision number
-            for (int i=0; i<caves.Count; i++)
-            {
-                if (caves[i].GetNCollidingRooms() >= nAllowedCollisions)
-                {
-                    caves[i].UpdateCollidingCaves();
-                    newCaves.Remove(caves[i]);
-                }
-                else
-                {
-                    if (caves[i] is Room)
-                    {
-                        rooms.Add((Room)caves[i]);
-                    }
-                    else
-                    {
-                        corridors.Add((Corridor)caves[i]);
-                    }
-                }
-            }
         }
     }
 }
