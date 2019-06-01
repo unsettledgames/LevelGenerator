@@ -215,7 +215,7 @@ namespace RoomGenerator
             // Utility random number generator
             Random random = new Random();
             // Room corner list
-            List<Corner> roomReference = toAddTo.GetSides[sideIndex](corridorWidth, corridorHeight);
+            List<Corner> roomReference = toAddTo.GetCornersForCorridor[sideIndex](corridorWidth, corridorHeight);
 
             if (!toAddTo.corridorAdjaciencies[sideIndex])
             {
@@ -262,71 +262,50 @@ namespace RoomGenerator
             Room toAddRoom;
             List<Corner> corridorCorners = toAddCorridor.GetCorners();
             Corner roomTopLeftCorner;
+            int cornerX;
+            int cornerY;
 
             Console.WriteLine("Adding room");
+
+            corridorCorners = toAddCorridor.GetCorners();
 
             switch (sideIndex)
             {
                 case Consts.NORTH:
-   
-                    corridorCorners = toAddCorridor.GetCorners();
-                    roomTopLeftCorner = new Corner(
-                                /* The x is the same of the middle point of the width of the corridor plus 
-                                * half the width of the room
-                                */ 
-                                (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
-                                roomWidth / 2,
-                                /* The y is the same of the north side of the corridor plus the height of the room */
-                                corridorCorners[Consts.TOP_LEFT].GetY() + roomHeight
-                        );
-                    /* Now that I have the corner, I can generate the room */
-                    toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
+                    cornerX = (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 - roomWidth / 2;
+                    cornerY = corridorCorners[Consts.TOP_LEFT].GetY() + roomHeight;
 
-                    toAddRoom.corridorAdjaciencies[Consts.SOUTH] = true;
                     break;
                 case Consts.EAST:
-                    corridorCorners = toAddCorridor.GetCorners();
-
-                    roomTopLeftCorner = new Corner(
-                             corridorCorners[Consts.TOP_RIGHT].GetX(),
-                             (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 +
-                             roomHeight / 2
-                        );
-                    toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
-
-                    toAddRoom.corridorAdjaciencies[Consts.WEST] = true;
+                    cornerX = corridorCorners[Consts.TOP_RIGHT].GetX();
+                    cornerY = (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 + roomHeight / 2;
 
                     break;
                 case Consts.SOUTH:
-                    corridorCorners = toAddCorridor.GetCorners();
-
-                    roomTopLeftCorner = new Corner(
-                             (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 -
-                             roomWidth / 2,
-                             corridorCorners[Consts.BOTTOM_RIGHT].GetY()
-                        );
-                    toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
-
-                    toAddRoom.corridorAdjaciencies[Consts.NORTH] = true;
+                    cornerX = (corridorCorners[Consts.TOP_LEFT].GetX() + corridorCorners[Consts.TOP_RIGHT].GetX()) / 2 - roomWidth / 2;
+                    cornerY = corridorCorners[Consts.BOTTOM_RIGHT].GetY();
 
                     break;
                 case Consts.WEST:
-                    corridorCorners = toAddCorridor.GetCorners();
-
-                    roomTopLeftCorner = new Corner(
-                             corridorCorners[Consts.TOP_LEFT].GetX() - roomWidth,
-                             (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 +
-                             roomHeight / 2
-                        );
-                    toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
-
-                    toAddRoom.corridorAdjaciencies[Consts.EAST] = true;
+                    cornerX = corridorCorners[Consts.TOP_LEFT].GetX() - roomWidth;
+                    cornerY = (corridorCorners[Consts.TOP_RIGHT].GetY() + corridorCorners[Consts.BOTTOM_RIGHT].GetY()) / 2 + roomHeight / 2;
 
                     break;
                 default:
                     toAddRoom = new Room(-1, -1, new Corner(-1, -1));
+
+                    cornerX = -1;
+                    cornerY = -1;
+
                     break;
             }
+
+            roomTopLeftCorner = new Corner(cornerX, cornerY);
+
+            /* Now that I have the corner, I can generate the room */
+            toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
+
+            toAddRoom.corridorAdjaciencies[Consts.SOUTH] = true;
 
             return toAddRoom;
         }

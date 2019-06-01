@@ -8,6 +8,6 @@ namespace RoomGenerator
 {
     class Types
     {
-        public delegate List<Corner> CornerListGetter(int corridorWidth, int corridorHeight);
+        public delegate List<Corner> CornerListGetterForCorridor(int corridorWidth, int corridorHeight);
     }
 }

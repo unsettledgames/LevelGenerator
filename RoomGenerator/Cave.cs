@@ -12,7 +12,7 @@ namespace RoomGenerator
         protected int id;
 
         private int width;
-        public List<Types.CornerListGetter> GetSides;
+        public List<Types.CornerListGetterForCorridor> GetCornersForCorridor;
         private int height;
         protected List<Corner> corners;
 
@@ -39,12 +39,12 @@ namespace RoomGenerator
             id = idCount;
             idCount++;
 
-            GetSides = new List<Types.CornerListGetter>();
+            GetCornersForCorridor = new List<Types.CornerListGetterForCorridor>();
 
-            GetSides.Add(GetNorthSide);
-            GetSides.Add(GetEastSide);
-            GetSides.Add(GetSouthSide);
-            GetSides.Add(GetWestSide);
+            GetCornersForCorridor.Add(GetNorthSide);
+            GetCornersForCorridor.Add(GetEastSide);
+            GetCornersForCorridor.Add(GetSouthSide);
+            GetCornersForCorridor.Add(GetWestSide);
         }
 
         public int GetWidth()

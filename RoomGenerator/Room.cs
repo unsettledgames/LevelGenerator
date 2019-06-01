@@ -44,10 +44,7 @@ namespace RoomGenerator
             else
             {
                 maxCorridors = 1;
-            }
-
-            Console.WriteLine("Massimo corridoi aggiungibili: " + maxCorridors);
-            
+            } 
         }
 
         public int GetMaxCorridors()
