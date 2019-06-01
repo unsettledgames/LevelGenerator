@@ -40,9 +40,10 @@ Here are the generation parameters:
 <h2>To do:</h2>
 <ul>
 <li>Add perlin noise to the borders of the rooms</li>
-<li>Add a GUI (at least to show a preview of the bitmap, but it can be also used to input parameters</li>
+<li>Existing bitmap opening (requires to build some kind of format to store data about rooms and corridors)</li>
+<li>Add a GUI (at least to show a preview of the bitmap, but it can be also used to input parameters)</li>
 <li>Have corridors that are not just a straight line from a room to another</li>
-<li>Possibility to add a level starting by a room of an existing level</li>
+<li>Possibility to add a level starting from a room of an existing level</li>
 </ul>
 
 <h2>Notes</h2>
