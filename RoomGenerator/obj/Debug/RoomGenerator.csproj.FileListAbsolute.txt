@@ -44,3 +44,9 @@ C:\Users\user\Desktop\RoomGenerator 9\RoomGenerator\obj\Debug\RoomGenerator.pdb
 C:\Users\user\Desktop\RoomGenerator 9\RoomGenerator\bin\Debug\RoomGenerator.exe
 C:\Users\user\Desktop\RoomGenerator 9\RoomGenerator\bin\Debug\RoomGenerator.pdb
 C:\Users\user\Desktop\RoomGenerator 9\RoomGenerator\obj\Debug\RoomGenerator.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\bin\Debug\RoomGenerator.exe.config
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\obj\Debug\RoomGenerator.exe
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\obj\Debug\RoomGenerator.pdb
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\bin\Debug\RoomGenerator.exe
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\bin\Debug\RoomGenerator.pdb
+C:\Users\user\Desktop\LevelGenerator\RoomGenerator\obj\Debug\RoomGenerator.csprojResolveAssemblyReference.cache

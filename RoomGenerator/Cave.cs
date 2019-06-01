@@ -12,8 +12,9 @@ namespace RoomGenerator
         protected int id;
 
         private int width;
+        public List<Types.CornerListGetter> GetSides;
         private int height;
-        private List<Corner> corners;
+        protected List<Corner> corners;
 
         public Cave(int width, int height, Corner topLeft)
         {
@@ -37,6 +38,13 @@ namespace RoomGenerator
             // Assigns progressively higher id
             id = idCount;
             idCount++;
+
+            GetSides = new List<Types.CornerListGetter>();
+
+            GetSides.Add(GetNorthSide);
+            GetSides.Add(GetEastSide);
+            GetSides.Add(GetSouthSide);
+            GetSides.Add(GetWestSide);
         }
 
         public int GetWidth()
@@ -59,11 +67,51 @@ namespace RoomGenerator
             return corners;
         }
 
+        public List<Corner> GetNorthSide(int corridorWidth, int corridorHeight)
+        {
+            List<Corner> ret = new List<Corner>();
+
+            ret.Add(new Corner(corners[Consts.TOP_LEFT].GetX(), corners[Consts.TOP_LEFT].GetY() + corridorWidth));
+            ret.Add(new Corner(corners[Consts.TOP_RIGHT].GetX() - corridorHeight, corners[Consts.TOP_RIGHT].GetY() + corridorWidth));
+
+            return ret;
+        }
+
+        public List<Corner> GetEastSide(int corridorWidth, int corridorHeight)
+        {
+            List<Corner> ret = new List<Corner>();
+
+            ret.Add(new Corner(corners[Consts.BOTTOM_RIGHT].GetX(), corners[Consts.BOTTOM_RIGHT].GetY() + corridorHeight));
+            ret.Add(new Corner(corners[Consts.TOP_RIGHT].GetX(), corners[Consts.TOP_RIGHT].GetY()));
+
+            return ret;
+        }
+
+        public List<Corner> GetSouthSide(int corridorWidth, int corridorHeight)
+        {
+            List<Corner> ret = new List<Corner>();
+
+            ret.Add(new Corner(corners[Consts.BOTTOM_LEFT].GetX(), corners[Consts.BOTTOM_LEFT].GetY()));
+            ret.Add(new Corner(corners[Consts.BOTTOM_RIGHT].GetX() - corridorHeight, corners[Consts.BOTTOM_RIGHT].GetY()));
+
+            return ret;
+        }
+
+        public List<Corner> GetWestSide(int corridorWidth, int corridorHeight)
+        {
+            List<Corner> ret = new List<Corner>();
+
+            ret.Add(new Corner(corners[Consts.BOTTOM_LEFT].GetX() - corridorWidth, corners[Consts.BOTTOM_LEFT].GetY() + corridorHeight));
+            ret.Add(new Corner(corners[Consts.TOP_LEFT].GetX() - corridorWidth, corners[Consts.TOP_LEFT].GetY()));
+
+            return ret;
+        }
+
         /** Adds the entire cave to the matrix
          * 
          * @param matrix: the destination matrix
          * @param code:   the code of the cave
-         */ 
+         */
         public void AddToMatrix(int[][] matrix, int code)
         {
             for (int i = corners[Consts.TOP_LEFT].GetX(); i < corners[Consts.TOP_RIGHT].GetX(); i++)

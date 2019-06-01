@@ -13,20 +13,19 @@ namespace RoomGenerator
         private int maxCorridors;
         private static Random random = new Random();
 
-        public bool hasOnTop;
-        public bool hasOnBottom;
-        public bool hasOnRight;
-        public bool hasOnLeft;
+        public bool[] corridorAdjaciencies;
 
         public Room (int width, int height, Corner topLeft) : base(width, height, topLeft)
         {
             corridors = new List<Corridor>();
             nCorridors = 0;
 
-            hasOnBottom = false;
-            hasOnLeft = false;
-            hasOnRight = false;
-            hasOnTop = false;
+            corridorAdjaciencies = new bool[Consts.SIDE_COUNT];
+
+            corridorAdjaciencies[Consts.NORTH] = false;
+            corridorAdjaciencies[Consts.EAST] = false;
+            corridorAdjaciencies[Consts.SOUTH] = false;
+            corridorAdjaciencies[Consts.WEST] = false;
 
             maxCorridors = random.Next(0, 101);
 

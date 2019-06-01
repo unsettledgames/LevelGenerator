@@ -112,7 +112,8 @@ namespace RoomGenerator
                 Room toAddTo = GetRandomExpandableRoom();
 
                 // Repeating until I can add corridors or I've added enough rooms
-                while ((rooms.Count < nRooms) && (toAddTo.GetNCorridors() < (maxCorridorsPerSide * Consts.SIDE_COUNT)) && (toAddTo.GetNCorridors() < toAddTo.GetMaxCorridors()))
+                while ((rooms.Count < nRooms) && (toAddTo.GetNCorridors() < (maxCorridorsPerSide * Consts.SIDE_COUNT)) 
+                    && (toAddTo.GetNCorridors() < toAddTo.GetMaxCorridors()))
                 {
                     // Adding corridors
                     // Trying to change reference room
@@ -213,80 +214,34 @@ namespace RoomGenerator
             Corridor toAddCorridor = null;
             // Utility random number generator
             Random random = new Random();
+            // Room corner list
+            List<Corner> roomReference = toAddTo.GetSides[sideIndex](corridorWidth, corridorHeight);
 
-            // Depending on the side, I should position the corridor in different ways
-            switch (sideIndex)
+            if (!toAddTo.corridorAdjaciencies[sideIndex])
             {
-                case Consts.NORTH:
-                    /* The y of the corridor is the same of the top side of the room, the x is randomly 
-                     * decided between the minimum and maximum of the side.
-                     */
-                    if (!toAddTo.hasOnTop)
-                    {
-                        corridorTopLeftCorner = new Corner(
-                            random.Next(currentRoomCorners[Consts.TOP_LEFT].GetX(),
-                                        currentRoomCorners[Consts.TOP_RIGHT].GetX() - corridorHeight),
-                            currentRoomCorners[Consts.TOP_LEFT].GetY() + corridorWidth);
+                corridorTopLeftCorner = new Corner(
+                        random.Next(
+                            roomReference[0].GetX(),
+                            roomReference[1].GetX()
+                        ),
+                        random.Next(
+                            roomReference[0].GetY(),
+                            roomReference[1].GetY()
+                        )
+                    );
 
-                        // Instantiating corridor
-                        toAddCorridor = new Corridor(corridorHeight, corridorWidth, corridorTopLeftCorner);
+                // Instantiating corridor
+                if (sideIndex == Consts.EAST || sideIndex == Consts.WEST)
+                {
+                    int tmp = corridorWidth;
+                    corridorWidth = corridorHeight;
+                    corridorHeight = tmp;
+                }
 
-                        // Notifying the room that now it has a corridor on top of it
-                        toAddTo.hasOnTop = true;
-                    }
-                    break;
-                case Consts.EAST:
-                    if (!toAddTo.hasOnRight)
-                    {
-                        /* The x of the corridor is the same of the top right corner of the room, the y is 
-                         * randomly decided between the minimum and maximum of the right (or left) side.
-                         */
+                toAddCorridor = new Corridor(corridorHeight, corridorWidth, corridorTopLeftCorner);
 
-                        corridorTopLeftCorner = new Corner(
-                            currentRoomCorners[Consts.TOP_RIGHT].GetX(),
-                            random.Next(currentRoomCorners[Consts.BOTTOM_RIGHT].GetY() + corridorHeight,
-                                        currentRoomCorners[Consts.TOP_RIGHT].GetY()));
-
-                        toAddCorridor = new Corridor(corridorWidth, corridorHeight, corridorTopLeftCorner);
-                        toAddTo.hasOnRight = true;
-                    }
-                    break;
-                case Consts.SOUTH:
-                    if (!toAddTo.hasOnBottom)
-                    {
-                        /* The y of the corridor is the same of the bottom side of the room, the x is randomly 
-                         * decided between the minimum and maximum of the (top or bottom) side.
-                         */
-                        corridorTopLeftCorner = new Corner(
-                            random.Next(currentRoomCorners[Consts.BOTTOM_LEFT].GetX(),
-                                        currentRoomCorners[Consts.BOTTOM_RIGHT].GetX() - corridorHeight),
-                            currentRoomCorners[Consts.BOTTOM_LEFT].GetY());
-
-                        toAddCorridor = new Corridor(corridorHeight, corridorWidth, corridorTopLeftCorner);
-                        toAddTo.hasOnBottom = true;
-
-                    }
-                    break;
-                case Consts.WEST:
-                    if (!toAddTo.hasOnLeft)
-                    {
-                        /* The x of the corridor is the same of the left side of the room, the y is randomly 
-                         * decided between the minimum and maximum of the (left or right) side.
-                         */
-                         
-                        corridorTopLeftCorner = new Corner(
-                            currentRoomCorners[Consts.TOP_LEFT].GetX() - corridorWidth,
-                            random.Next(currentRoomCorners[Consts.BOTTOM_LEFT].GetY() + corridorHeight,
-                                        currentRoomCorners[Consts.TOP_LEFT].GetY()));
-                        
-                        toAddCorridor = new Corridor(corridorWidth, corridorHeight, corridorTopLeftCorner);
-                        toAddTo.hasOnLeft = true;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Unknown side index (" + sideIndex + ")");
-                    toAddCorridor = new Corridor(-1, -1, new Corner(-1, -1));
-                    break;
+                // Notifying the room that now it has a corridor on top of it
+                toAddTo.corridorAdjaciencies[sideIndex] = true;
             }
 
             return toAddCorridor;
@@ -327,7 +282,7 @@ namespace RoomGenerator
                     /* Now that I have the corner, I can generate the room */
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
-                    toAddRoom.hasOnBottom = true;
+                    toAddRoom.corridorAdjaciencies[Consts.SOUTH] = true;
                     break;
                 case Consts.EAST:
                     corridorCorners = toAddCorridor.GetCorners();
@@ -339,7 +294,7 @@ namespace RoomGenerator
                         );
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
-                    toAddRoom.hasOnLeft = true;
+                    toAddRoom.corridorAdjaciencies[Consts.WEST] = true;
 
                     break;
                 case Consts.SOUTH:
@@ -352,7 +307,7 @@ namespace RoomGenerator
                         );
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
-                    toAddRoom.hasOnTop = true;
+                    toAddRoom.corridorAdjaciencies[Consts.NORTH] = true;
 
                     break;
                 case Consts.WEST:
@@ -365,7 +320,7 @@ namespace RoomGenerator
                         );
                     toAddRoom = new Room(roomWidth, roomHeight, roomTopLeftCorner);
 
-                    toAddRoom.hasOnRight = true;
+                    toAddRoom.corridorAdjaciencies[Consts.EAST] = true;
 
                     break;
                 default:
