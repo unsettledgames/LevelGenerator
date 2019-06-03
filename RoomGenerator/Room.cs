@@ -11,6 +11,10 @@ namespace RoomGenerator
         private List<Corridor> corridors;
         private int nCorridors;
         private int maxCorridors;
+        private int minBlockHeight;
+        private int maxBlockHeight;
+        private int minBlockWidth;
+        private int maxBlockWidth;
         private static Random random = new Random();
 
         public bool[] corridorAdjaciencies;
@@ -67,9 +71,9 @@ namespace RoomGenerator
             return nCorridors;
         }
 
-        public void AddToMatrix(int[][] level)
+        public void AddToMatrix(int[][] level, PerlinNoise noiseGenerator)
         {
-            AddToMatrix(level, id);
+            AddToMatrix(level, id, noiseGenerator);
         }
     }
 }

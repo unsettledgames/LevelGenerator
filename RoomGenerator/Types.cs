@@ -9,5 +9,10 @@ namespace RoomGenerator
     class Types
     {
         public delegate List<Corner> CornerListGetterForCorridor(int corridorWidth, int corridorHeight);
+        public struct NBlocksArea
+        {
+            int nBlocks;
+            int area;
+        }
     }
 }

@@ -112,15 +112,55 @@ namespace RoomGenerator
          * @param matrix: the destination matrix
          * @param code:   the code of the cave
          */
-        public void AddToMatrix(int[][] matrix, int code)
+        public void AddToMatrix(int[][] matrix, int code, PerlinNoise noise)
         {
+            float iIndex = 0;
+            float jIndex = 0;
+            float zIndex = 0;
+            double iNoise;
+            double jNoise;
+
             for (int i = corners[Consts.TOP_LEFT].GetX(); i < corners[Consts.TOP_RIGHT].GetX(); i++)
             {
-                for (int j=corners[Consts.BOTTOM_LEFT].GetY(); j<corners[Consts.TOP_LEFT].GetY(); j++)
+                for (int j = corners[Consts.BOTTOM_LEFT].GetY(); j < corners[Consts.TOP_LEFT].GetY(); j++)
                 {
                     MatrixUtility.AddElementFromCenter(i, j, code, matrix);
+
+                    iIndex += Consts.NOISE_INCREASE;
+                    jIndex += Consts.NOISE_INCREASE;
+                    zIndex += Consts.NOISE_INCREASE;
                 }
             }
+
+            /*
+            for (int i = corners[Consts.TOP_LEFT].GetX(); i < corners[Consts.TOP_RIGHT].GetX(); i++)
+            {
+                for (int j = corners[Consts.BOTTOM_LEFT].GetY(); j < corners[Consts.TOP_LEFT].GetY(); j++)
+                {
+                    int iOffset = 0;
+                    int jOffset = 0;
+                    
+                    if (i == corners[Consts.TOP_LEFT].GetX() ||
+                        i == corners[Consts.TOP_RIGHT].GetX() - 1 ||
+                        j == corners[Consts.BOTTOM_LEFT].GetY() ||
+                        j == corners[Consts.TOP_LEFT].GetY() - 1)
+                    {
+                        iNoise = noise.Noise(i * iIndex, j * jIndex, i * zIndex);
+                        jNoise = noise.Noise(i * iIndex, j * jIndex, i * zIndex);
+
+                        iOffset = (int)(iNoise * 5);
+                        jOffset = (int)(iNoise * 5);
+                    }
+
+
+                    MatrixUtility.AddElementFromCenter(i + iOffset, j + jOffset, code, matrix);
+
+                    iIndex += Consts.NOISE_INCREASE;
+                    jIndex += Consts.NOISE_INCREASE;
+                    zIndex += Consts.NOISE_INCREASE;
+                }
+            }
+            */
         }
 
         /** Checks if the current cave collides with another one

@@ -205,7 +205,6 @@ namespace RoomGenerator
          */
         private Corridor GenerateCorridor(int sideIndex, Room toAddTo, int corridorHeight, int corridorWidth)
         {
-            Console.WriteLine("Adding corridor");
             // Getting corners of the reference room
             List<Corner> currentRoomCorners = toAddTo.GetCorners();
             // Top left corner of the corridor
@@ -265,8 +264,6 @@ namespace RoomGenerator
             int cornerX;
             int cornerY;
 
-            Console.WriteLine("Adding room");
-
             corridorCorners = toAddCorridor.GetCorners();
 
             switch (sideIndex)
@@ -314,18 +311,19 @@ namespace RoomGenerator
          */ 
         private void FillMatrix()
         {
+            Random random = new Random();
+            PerlinNoise noise = new PerlinNoise(random.Next(0, 0));
+
             // Adding corridors
             for (int i = 0; i < corridors.Count; i++)
             {
-                corridors[i].AddToMatrix(level);
-                Console.WriteLine(i + ") Aggiungo corridoio alla matrice");
+                corridors[i].AddToMatrix(level, noise);
             }
 
             // Adding rooms
             for (int i=0; i<rooms.Count; i++)
             {
-                rooms[i].AddToMatrix(level);
-                Console.WriteLine(i + ") Aggiungo stanza alla matrice");
+                rooms[i].AddToMatrix(level, noise);
             }
         }
 
@@ -334,31 +332,10 @@ namespace RoomGenerator
          */ 
         private void ExportBitmap()
         {
-            double noiseValue;
-            Random random = new Random();
-            PerlinNoise noise = new PerlinNoise(random.Next(0, 1000000000));
-            float iIndex = 0;
-            float jIndex = 0;
-            float zIndex = 0;
-            double max = -99999999;
-            double min = 99999999;
-            
-
             for (int i=0; i<Consts.MAX_LEVEL_WIDTH; i++)
             {
                 for (int j=0; j<Consts.MAX_LEVEL_HEIGHT; j++)
                 {
-                    noiseValue = noise.Noise(i * iIndex, j * jIndex, i * zIndex);
-
-                    if (noiseValue < min)
-                    {
-                        min = noiseValue;
-                    }
-                    else if (noiseValue > max)
-                    {
-                        max = noiseValue;
-                    }
-
                     if (level[i][j] == -1)
                     {
                         bitmap.SetPixel(i, j, backgroundColor);
@@ -368,13 +345,9 @@ namespace RoomGenerator
                         bitmap.SetPixel(i, j, foregroundColor);//Color.FromArgb(level[i][j], level[i][j] * 2, level[i][j] * 3));
                     }
 
-                    iIndex += Consts.NOISE_INCREASE;
-                    jIndex += Consts.NOISE_INCREASE;
-                    zIndex += Consts.NOISE_INCREASE;
+                    
                 }
             }
-
-            Console.WriteLine(min + "," + max);
 
             Console.WriteLine("Finito, salvo su file...");
             bitmap.Save("generated.bmp");

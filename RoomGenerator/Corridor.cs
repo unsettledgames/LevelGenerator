@@ -12,9 +12,9 @@ namespace RoomGenerator
         {
         }
 
-        public void AddToMatrix(int[][] level)
+        public void AddToMatrix(int[][] level, PerlinNoise noiseGenerator)
         {
-            AddToMatrix(level, id);
+            AddToMatrix(level, id, noiseGenerator);
         }
     }
 }
