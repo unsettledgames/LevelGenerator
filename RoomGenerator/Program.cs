@@ -15,7 +15,10 @@ namespace RoomGenerator
             Color foreground = Color.FromArgb(255, 255, 255, 255);
 
             Level level = new RoomGenerator.Level(7, 20, 7, 20, 15, 40, 3, 5, 1, 15, 40, background, foreground, 50);
+            level.Initialize(0, 20, 20);
             level.GenerateMap();
+
+            Utility.GetBlocksByArea(500);
             string c = Console.ReadLine();
 
             while (c.Equals(""))

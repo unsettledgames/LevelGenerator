@@ -396,5 +396,28 @@ namespace RoomGenerator
 
             return ret;
         }
+
+        public void Initialize(int minBlocks, int maxBlocks, int precision)
+        {
+            int blockDiff = maxBlocks - minBlocks;
+            int blockIncrease = blockDiff / precision;
+            int minArea = minRoomHeight * minRoomWidth;
+            int maxArea = maxRoomWidth * maxRoomHeight;
+            int areaDiff = maxArea - minArea;
+            int areaIncrease = areaDiff / precision;
+
+            int currentArea = minArea;
+            int currentBlocks = minBlocks;
+
+            Utility.blocksPerArea = new Dictionary<int, int>();
+
+            for (int i=maxBlocks; i<maxBlocks; i++)
+            {
+                Utility.blocksPerArea[currentArea] = currentBlocks;
+
+                currentArea += areaIncrease;
+                currentBlocks += blockIncrease;
+            }
+        }
     }
 }

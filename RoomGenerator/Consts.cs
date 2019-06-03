@@ -30,6 +30,10 @@ namespace RoomGenerator
 
         public const int SIDE_COUNT = 4;
 
+        public const int MIN_BLOCK_DIVIDER = 3;
+        public const int BLOCK_TO_SUB = 3;
+
+
         public const float NOISE_INCREASE = 0.9999f;
     }
 }

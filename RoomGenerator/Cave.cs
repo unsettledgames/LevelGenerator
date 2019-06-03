@@ -11,9 +11,10 @@ namespace RoomGenerator
         private static int idCount = 0;
         protected int id;
 
-        private int width;
-        public List<Types.CornerListGetterForCorridor> GetCornersForCorridor;
-        private int height;
+        protected int width;
+        protected int height;
+
+        public List<Utility.CornerListGetterForCorridor> GetCornersForCorridor;
         protected List<Corner> corners;
 
         public Cave(int width, int height, Corner topLeft)
@@ -39,7 +40,7 @@ namespace RoomGenerator
             id = idCount;
             idCount++;
 
-            GetCornersForCorridor = new List<Types.CornerListGetterForCorridor>();
+            GetCornersForCorridor = new List<Utility.CornerListGetterForCorridor>();
 
             GetCornersForCorridor.Add(GetNorthSide);
             GetCornersForCorridor.Add(GetEastSide);

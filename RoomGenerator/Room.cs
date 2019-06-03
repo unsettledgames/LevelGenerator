@@ -11,10 +11,6 @@ namespace RoomGenerator
         private List<Corridor> corridors;
         private int nCorridors;
         private int maxCorridors;
-        private int minBlockHeight;
-        private int maxBlockHeight;
-        private int minBlockWidth;
-        private int maxBlockWidth;
         private static Random random = new Random();
 
         public bool[] corridorAdjaciencies;
@@ -48,7 +44,7 @@ namespace RoomGenerator
             else
             {
                 maxCorridors = 1;
-            } 
+            }
         }
 
         public int GetMaxCorridors()
@@ -74,6 +70,53 @@ namespace RoomGenerator
         public void AddToMatrix(int[][] level, PerlinNoise noiseGenerator)
         {
             AddToMatrix(level, id, noiseGenerator);
+
+            Random random = new Random();
+
+            int minBlockX = corners[Consts.TOP_LEFT].GetX();
+            int maxBlockX = corners[Consts.TOP_RIGHT].GetX();
+            int minBlockY = corners[Consts.BOTTOM_RIGHT].GetY();
+            int maxBlockY = corners[Consts.TOP_RIGHT].GetY();
+            int nBlocks = Utility.GetBlocksByArea(width * height);
+
+            if (corridorAdjaciencies[Consts.WEST])
+            {
+                minBlockX += Consts.BLOCK_TO_SUB;
+            }
+
+            if (corridorAdjaciencies[Consts.EAST])
+            {
+                maxBlockX -= Consts.BLOCK_TO_SUB;
+            }
+
+            if (corridorAdjaciencies[Consts.NORTH])
+            {
+                maxBlockY -= Consts.BLOCK_TO_SUB; 
+            }
+
+            if (corridorAdjaciencies[Consts.SOUTH])
+            {
+                minBlockY += Consts.BLOCK_TO_SUB;
+            }
+
+            int minBlockWidth = 0;
+            int minBlockHeight = 0;
+            int maxBlockWidth = maxBlockX - minBlockX;
+            int maxBlockHeight = maxBlockY - minBlockY;
+
+
+            for (int i=0; i<nBlocks; i++)
+            {
+                int cornerX = random.Next(minBlockX, maxBlockX);
+                int cornerY = random.Next(minBlockY, maxBlockY);
+
+                int blockWidth = random.Next(minBlockWidth, maxBlockWidth);
+                int blockHeight = random.Next(minBlockHeight, maxBlockHeight);
+
+                Block block = new Block(blockWidth, blockHeight, new Corner(cornerX, cornerY));
+
+                block.AddToMatrix(level, noiseGenerator);
+            }
         }
     }
 }
