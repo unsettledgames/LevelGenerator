@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="Cave.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="Corner.cs" />
