@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="be82f53c-11d7-4bd6-9f2e-b51f5649ebc2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/Cave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Cave.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/Utility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Utility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/generated.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/generated.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.pdb" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <folding>
+                <marker date="1559997018999" expanded="true" signature="6:137" ph="..." />
+                <marker date="1559997018999" expanded="true" signature="162:822" ph="{...}" />
+                <marker date="1559997018999" expanded="true" signature="182:820" ph="{...}" />
+                <marker date="1559997018999" expanded="true" signature="228:814" ph="{...}" />
+                <marker date="1559997018999" expanded="true" signature="698:804" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Utility.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+              <folding>
+                <marker date="1559997179206" expanded="false" signature="6:115" ph="..." />
+                <marker date="1559997179206" expanded="true" signature="140:695" ph="{...}" />
+                <marker date="1559997179206" expanded="true" signature="160:693" ph="{...}" />
+                <marker date="1559997179206" expanded="true" signature="382:687" ph="{...}" />
+                <marker date="1559997179206" expanded="true" signature="442:652" ph="{...}" />
+                <marker date="1559997179206" expanded="true" signature="557:638" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Cave.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+              <folding>
+                <marker date="1559997201547" expanded="false" signature="6:115" ph="..." />
+                <marker date="1559997201547" expanded="true" signature="140:6547" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="157:6545" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="470:1471" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="1502:1548" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="1580:1627" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="1655:1698" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="1740:1788" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="1869:2215" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="2295:2617" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="2698:3024" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="3104:3454" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="3464:3622" ph="/* Adds the entire cave to the matrix ... */" />
+                <marker date="1559997201547" expanded="true" signature="3699:5555" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="3901:4308" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="4022:4294" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="4322:5545" ph="/* for (int i = corners[Consts.TOP_LEFT].GetX(); i &lt; corners[Consts.TOP_RIGHT].GetX(); i++) ... */" />
+                <marker date="1559997201547" expanded="true" signature="5565:5783" ph="/* Checks if the current cave collides with another one ... */" />
+                <marker date="1559997201547" expanded="true" signature="5829:6539" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="5877:6477" ph="{...}" />
+                <marker date="1559997201547" expanded="true" signature="6346:6416" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Level.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5094">
+              <caret line="395" lean-forward="true" selection-start-line="395" selection-end-line="395" />
+              <folding>
+                <marker date="1559997135211" expanded="false" signature="6:137" ph="..." />
+                <marker date="1559997135211" expanded="true" signature="162:16120" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="180:16118" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="1757:2903" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="2944:3403" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="3072:3166" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="3224:3393" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="3300:3379" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="3438:7737" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="3896:7510" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="4324:7496" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="4363:4437" ph="/* Adding corridors ... */" />
+                <marker date="1559997135211" expanded="true" signature="4506:4678" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="4836:7478" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="5013:7456" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="5520:5831" ph="/* WARNING! The term &quot;height&quot; is referred to the shortest, vertical side. In case of vertical ... */" />
+                <marker date="1559997135211" expanded="true" signature="6405:7430" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="6669:6848" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="6965:7400" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="7747:7886" ph="/* Checks if the room collides with something else ... */" />
+                <marker date="1559997135211" expanded="true" signature="7942:8184" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="7998:8147" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="8064:8133" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="8194:8584" ph="/* Generates a corridor ... */" />
+                <marker date="1559997135211" expanded="true" signature="8694:10315" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="9294:10270" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="9837:10012" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="10325:10691" ph="/* Generates a room ... */" />
+                <marker date="1559997135211" expanded="true" signature="10795:12738" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="11083:12421" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="12748:12807" ph="/* Fills the matrix with the ids of the rooms ... */" />
+                <marker date="1559997135211" expanded="true" signature="12842:13298" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13049:13133" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13208:13288" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13308:13392" ph="/* Exports the previously generated matrix in bitmap format ... */" />
+                <marker date="1559997135211" expanded="true" signature="13429:14105" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13496:13993" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13572:13979" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13633:13741" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="13766:13939" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="14123:14198" ph="/* Returns the first expandable room from the list ... */" />
+                <marker date="1559997135211" expanded="true" signature="14244:14582" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="14300:14546" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="14459:14532" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="14601:14661" ph="/* Returns a random expandable room ... */" />
+                <marker date="1559997135211" expanded="true" signature="14707:14841" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="14851:14925" ph="/* Returns the entire list of the expandable rooms ... */" />
+                <marker date="1559997135211" expanded="true" signature="14973:15307" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="15081:15272" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="15183:15258" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="15384:16112" ph="{...}" />
+                <marker date="1559997135211" expanded="true" signature="15912:16102" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Room.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="89">
+              <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+              <folding>
+                <marker date="1559998941236" expanded="false" signature="6:115" ph="..." />
+                <marker date="1559998941236" expanded="true" signature="140:4338" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="164:4336" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="468:1280" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="925:987" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1027:1089" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1129:1191" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1208:1270" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1318:1371" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1416:1466" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1515:1595" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1631:1682" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="1758:4330" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="2208:2746" ph="{...}" />
+                <marker date="1559998941236" expanded="true" signature="2772:4320" ph="/* int minBlockX = corners[Consts.TOP_LEFT].GetX(); ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RoomGenerator/Block.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+              <folding>
+                <marker date="1559996243641" expanded="false" signature="6:115" ph="..." />
+                <marker date="1559996243641" expanded="true" signature="140:438" ph="{...}" />
+                <marker date="1559996243641" expanded="true" signature="165:436" ph="{...}" />
+                <marker date="1559996243641" expanded="true" signature="262:282" ph="{...}" />
+                <marker date="1559996243641" expanded="true" signature="358:430" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Level.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Block.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Cave.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RoomGenerator/Utility.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/RoomGenerator/Program.cs" />
+        <option value="$PROJECT_DIR$/RoomGenerator/Level.cs" />
+        <option value="$PROJECT_DIR$/RoomGenerator/Utility.cs" />
+        <option value="$PROJECT_DIR$/RoomGenerator/Cave.cs" />
+        <option value="$PROJECT_DIR$/RoomGenerator/Room.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.RoomGenerator/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.RoomGenerator/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.RoomGenerator/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="34" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="RoomGenerator" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="RoomGenerator" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="RoomGenerator" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RoomGenerator/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/RoomGenerator/RoomGenerator.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.5.2" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be82f53c-11d7-4bd6-9f2e-b51f5649ebc2" name="Default Changelist" comment="" />
+      <created>1559996700098</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559996700098</updated>
+      <workItem from="1559996725192" duration="2667000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2667000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3290735" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Build" weight="0.3290735" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3290735" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.399361" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Block.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1559996243641" expanded="false" signature="6:115" ph="..." />
+            <marker date="1559996243641" expanded="true" signature="140:438" ph="{...}" />
+            <marker date="1559996243641" expanded="true" signature="165:436" ph="{...}" />
+            <marker date="1559996243641" expanded="true" signature="262:282" ph="{...}" />
+            <marker date="1559996243641" expanded="true" signature="358:430" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <marker date="1559997018999" expanded="true" signature="6:137" ph="..." />
+            <marker date="1559997018999" expanded="true" signature="162:822" ph="{...}" />
+            <marker date="1559997018999" expanded="true" signature="182:820" ph="{...}" />
+            <marker date="1559997018999" expanded="true" signature="228:814" ph="{...}" />
+            <marker date="1559997018999" expanded="true" signature="698:804" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Utility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <marker date="1559997179206" expanded="false" signature="6:115" ph="..." />
+            <marker date="1559997179206" expanded="true" signature="140:695" ph="{...}" />
+            <marker date="1559997179206" expanded="true" signature="160:693" ph="{...}" />
+            <marker date="1559997179206" expanded="true" signature="382:687" ph="{...}" />
+            <marker date="1559997179206" expanded="true" signature="442:652" ph="{...}" />
+            <marker date="1559997179206" expanded="true" signature="557:638" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Cave.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
+          <folding>
+            <marker date="1559997201547" expanded="false" signature="6:115" ph="..." />
+            <marker date="1559997201547" expanded="true" signature="140:6547" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="157:6545" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="470:1471" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="1502:1548" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="1580:1627" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="1655:1698" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="1740:1788" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="1869:2215" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="2295:2617" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="2698:3024" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="3104:3454" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="3464:3622" ph="/* Adds the entire cave to the matrix ... */" />
+            <marker date="1559997201547" expanded="true" signature="3699:5555" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="3901:4308" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="4022:4294" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="4322:5545" ph="/* for (int i = corners[Consts.TOP_LEFT].GetX(); i &lt; corners[Consts.TOP_RIGHT].GetX(); i++) ... */" />
+            <marker date="1559997201547" expanded="true" signature="5565:5783" ph="/* Checks if the current cave collides with another one ... */" />
+            <marker date="1559997201547" expanded="true" signature="5829:6539" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="5877:6477" ph="{...}" />
+            <marker date="1559997201547" expanded="true" signature="6346:6416" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Level.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5094">
+          <caret line="395" lean-forward="true" selection-start-line="395" selection-end-line="395" />
+          <folding>
+            <marker date="1559997135211" expanded="false" signature="6:137" ph="..." />
+            <marker date="1559997135211" expanded="true" signature="162:16120" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="180:16118" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="1757:2903" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="2944:3403" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="3072:3166" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="3224:3393" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="3300:3379" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="3438:7737" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="3896:7510" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="4324:7496" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="4363:4437" ph="/* Adding corridors ... */" />
+            <marker date="1559997135211" expanded="true" signature="4506:4678" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="4836:7478" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="5013:7456" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="5520:5831" ph="/* WARNING! The term &quot;height&quot; is referred to the shortest, vertical side. In case of vertical ... */" />
+            <marker date="1559997135211" expanded="true" signature="6405:7430" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="6669:6848" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="6965:7400" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="7747:7886" ph="/* Checks if the room collides with something else ... */" />
+            <marker date="1559997135211" expanded="true" signature="7942:8184" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="7998:8147" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="8064:8133" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="8194:8584" ph="/* Generates a corridor ... */" />
+            <marker date="1559997135211" expanded="true" signature="8694:10315" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="9294:10270" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="9837:10012" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="10325:10691" ph="/* Generates a room ... */" />
+            <marker date="1559997135211" expanded="true" signature="10795:12738" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="11083:12421" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="12748:12807" ph="/* Fills the matrix with the ids of the rooms ... */" />
+            <marker date="1559997135211" expanded="true" signature="12842:13298" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13049:13133" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13208:13288" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13308:13392" ph="/* Exports the previously generated matrix in bitmap format ... */" />
+            <marker date="1559997135211" expanded="true" signature="13429:14105" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13496:13993" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13572:13979" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13633:13741" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="13766:13939" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="14123:14198" ph="/* Returns the first expandable room from the list ... */" />
+            <marker date="1559997135211" expanded="true" signature="14244:14582" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="14300:14546" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="14459:14532" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="14601:14661" ph="/* Returns a random expandable room ... */" />
+            <marker date="1559997135211" expanded="true" signature="14707:14841" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="14851:14925" ph="/* Returns the entire list of the expandable rooms ... */" />
+            <marker date="1559997135211" expanded="true" signature="14973:15307" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="15081:15272" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="15183:15258" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="15384:16112" ph="{...}" />
+            <marker date="1559997135211" expanded="true" signature="15912:16102" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RoomGenerator/Room.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+          <folding>
+            <marker date="1559998941236" expanded="false" signature="6:115" ph="..." />
+            <marker date="1559998941236" expanded="true" signature="140:4338" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="164:4336" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="468:1280" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="925:987" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1027:1089" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1129:1191" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1208:1270" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1318:1371" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1416:1466" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1515:1595" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1631:1682" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="1758:4330" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="2208:2746" ph="{...}" />
+            <marker date="1559998941236" expanded="true" signature="2772:4320" ph="/* int minBlockX = corners[Consts.TOP_LEFT].GetX(); ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

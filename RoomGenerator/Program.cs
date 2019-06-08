@@ -18,7 +18,7 @@ namespace RoomGenerator
             level.Initialize(0, 20, 20);
             level.GenerateMap();
 
-            Utility.GetBlocksByArea(500);
+            Console.WriteLine(Utility.GetBlocksByArea(500));
             string c = Console.ReadLine();
 
             while (c.Equals(""))

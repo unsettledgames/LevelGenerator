@@ -72,7 +72,28 @@ namespace RoomGenerator
             AddToMatrix(level, id, noiseGenerator);
 
             Random random = new Random();
+            int blockWidth;
+            int blockHeight;
+            int blockCornerX;
+            int blockCornerY;
+            int currentX;
+            int tollerance = 2;
+            int roomCornerX = corners[Consts.TOP_LEFT].GetX();
+            int roomCornerY = corners[Consts.BOTTOM_LEFT].GetY();
 
+            for (int i = 0; i < 8; i++)
+            {
+                blockWidth = random.Next(3, (width / 3) * 2);
+                blockHeight = random.Next(3, (height / 3) * 2);
+                
+                blockCornerX = random.Next(roomCornerX, corners[Consts.TOP_RIGHT].GetX());
+                blockCornerY = random.Next(roomCornerY, corners[Consts.TOP_RIGHT].GetY());
+                
+                Block toAdd = new Block(blockWidth, blockHeight, new Corner(blockCornerX, blockCornerY));
+                toAdd.AddToMatrix(level, -1, noiseGenerator);
+            }
+            
+            /*
             int minBlockX = corners[Consts.TOP_LEFT].GetX();
             int maxBlockX = corners[Consts.TOP_RIGHT].GetX();
             int minBlockY = corners[Consts.BOTTOM_RIGHT].GetY();
@@ -105,7 +126,7 @@ namespace RoomGenerator
             int maxBlockHeight = maxBlockY - minBlockY;
 
 
-            for (int i=0; i<nBlocks; i++)
+            for (int i=0; i<5; i++)
             {
                 int cornerX = random.Next(minBlockX, maxBlockX);
                 int cornerY = random.Next(minBlockY, maxBlockY);
@@ -117,6 +138,7 @@ namespace RoomGenerator
 
                 block.AddToMatrix(level, noiseGenerator);
             }
+            */
         }
     }
 }

@@ -118,8 +118,6 @@ namespace RoomGenerator
             float iIndex = 0;
             float jIndex = 0;
             float zIndex = 0;
-            double iNoise;
-            double jNoise;
 
             for (int i = corners[Consts.TOP_LEFT].GetX(); i < corners[Consts.TOP_RIGHT].GetX(); i++)
             {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Nicola\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Nicola\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_RoomGenerator.-18061684.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Nicola\Desktop\Git projects\LevelGenerator" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="RoomGenerator" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Block.cs" t="Include" />
+        <e p="Cave.cs" t="Include" />
+        <e p="ClassDiagram1.cd" t="Include" />
+        <e p="Consts.cs" t="Include" />
+        <e p="Corner.cs" t="Include" />
+        <e p="Corridor.cs" t="Include" />
+        <e p="Level.cs" t="Include" />
+        <e p="MatrixUtility.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="PerlinNoise.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Room.cs" t="Include" />
+        <e p="RoomGenerator.csproj" t="IncludeRecursive" />
+        <e p="Utility.cs" t="Include" />
+      </e>
+      <e p="RoomGenerator.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

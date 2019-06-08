@@ -411,7 +411,7 @@ namespace RoomGenerator
 
             Utility.blocksPerArea = new Dictionary<int, int>();
 
-            for (int i=maxBlocks; i<maxBlocks; i++)
+            for (int i=minBlocks; i<maxBlocks; i++)
             {
                 Utility.blocksPerArea[currentArea] = currentBlocks;
 
