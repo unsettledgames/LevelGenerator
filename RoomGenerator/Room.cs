@@ -13,20 +13,19 @@ namespace RoomGenerator
         private int maxCorridors;
         private static Random random = new Random();
 
-        public bool hasOnTop;
-        public bool hasOnBottom;
-        public bool hasOnRight;
-        public bool hasOnLeft;
+        public bool[] corridorAdjaciencies;
 
         public Room (int width, int height, Corner topLeft) : base(width, height, topLeft)
         {
             corridors = new List<Corridor>();
             nCorridors = 0;
 
-            hasOnBottom = false;
-            hasOnLeft = false;
-            hasOnRight = false;
-            hasOnTop = false;
+            corridorAdjaciencies = new bool[Consts.SIDE_COUNT];
+
+            corridorAdjaciencies[Consts.NORTH] = false;
+            corridorAdjaciencies[Consts.EAST] = false;
+            corridorAdjaciencies[Consts.SOUTH] = false;
+            corridorAdjaciencies[Consts.WEST] = false;
 
             maxCorridors = random.Next(0, 101);
 
@@ -46,9 +45,6 @@ namespace RoomGenerator
             {
                 maxCorridors = 1;
             }
-
-            Console.WriteLine("Massimo corridoi aggiungibili: " + maxCorridors);
-            
         }
 
         public int GetMaxCorridors()
@@ -71,9 +67,56 @@ namespace RoomGenerator
             return nCorridors;
         }
 
-        public void AddToMatrix(int[][] level)
+        public void AddToMatrix(int[][] level, PerlinNoise noiseGenerator)
         {
-            AddToMatrix(level, id);
+            AddToMatrix(level, id, noiseGenerator);
+
+            Random random = new Random();
+
+            int minBlockX = corners[Consts.TOP_LEFT].GetX();
+            int maxBlockX = corners[Consts.TOP_RIGHT].GetX();
+            int minBlockY = corners[Consts.BOTTOM_RIGHT].GetY();
+            int maxBlockY = corners[Consts.TOP_RIGHT].GetY();
+            int nBlocks = Utility.GetBlocksByArea(width * height);
+
+            if (corridorAdjaciencies[Consts.WEST])
+            {
+                minBlockX += Consts.BLOCK_TO_SUB;
+            }
+
+            if (corridorAdjaciencies[Consts.EAST])
+            {
+                maxBlockX -= Consts.BLOCK_TO_SUB;
+            }
+
+            if (corridorAdjaciencies[Consts.NORTH])
+            {
+                maxBlockY -= Consts.BLOCK_TO_SUB; 
+            }
+
+            if (corridorAdjaciencies[Consts.SOUTH])
+            {
+                minBlockY += Consts.BLOCK_TO_SUB;
+            }
+
+            int minBlockWidth = 0;
+            int minBlockHeight = 0;
+            int maxBlockWidth = maxBlockX - minBlockX;
+            int maxBlockHeight = maxBlockY - minBlockY;
+
+
+            for (int i=0; i<nBlocks; i++)
+            {
+                int cornerX = random.Next(minBlockX, maxBlockX);
+                int cornerY = random.Next(minBlockY, maxBlockY);
+
+                int blockWidth = random.Next(minBlockWidth, maxBlockWidth);
+                int blockHeight = random.Next(minBlockHeight, maxBlockHeight);
+
+                Block block = new Block(blockWidth, blockHeight, new Corner(cornerX, cornerY));
+
+                block.AddToMatrix(level, noiseGenerator);
+            }
         }
     }
 }
