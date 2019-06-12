@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be82f53c-11d7-4bd6-9f2e-b51f5649ebc2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/Cave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Cave.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/Utility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/Utility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/RoomGenerator.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/bin/Debug/generated.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/bin/Debug/generated.bmp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RoomGenerator/obj/Debug/RoomGenerator.pdb" afterDir="false" />
-    </list>
+    <list default="true" id="be82f53c-11d7-4bd6-9f2e-b51f5649ebc2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,8 +141,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RoomGenerator/Room.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+            <state relative-caret-position="137">
+              <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
               <folding>
                 <marker date="1559998941236" expanded="false" signature="6:115" ph="..." />
                 <marker date="1559998941236" expanded="true" signature="140:4338" ph="{...}" />
@@ -261,6 +248,7 @@
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -307,12 +295,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559996700098</updated>
-      <workItem from="1559996725192" duration="2667000" />
+      <workItem from="1559996725192" duration="2840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2667000" />
+    <option name="totallyTimeSpent" value="2840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -325,7 +313,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
@@ -343,7 +330,7 @@
       <window_info anchor="bottom" id="Build" weight="0.3290735" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3290735" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3290735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.399361" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -509,8 +496,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RoomGenerator/Room.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="90" column="16" lean-forward="true" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+        <state relative-caret-position="137">
+          <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
           <folding>
             <marker date="1559998941236" expanded="false" signature="6:115" ph="..." />
             <marker date="1559998941236" expanded="true" signature="140:4338" ph="{...}" />
