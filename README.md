@@ -3,6 +3,8 @@
 The LevelGenerator is a C# program that generates levels (in bitmap format) composed by rectangular rooms connected by corridors. 
 It is perfect for 2D top-down games, but it can also be used to build levels for sidescroller games.
 
+<center><img src = "https://i.redd.it/vxa35wy8zl131.png"/></center>
+
 <h2>How does it work?</h2>
 <ul>
 <li>The program starts by generating a single room. </li>
